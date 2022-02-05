@@ -1,0 +1,22 @@
+precision highp float;
+
+struct Light
+{
+    vec4 pos;
+    vec4 col;
+};
+
+uniform sampler2D tex;
+varying vec2 coord;
+varying vec3 newNormals;
+varying vec3 point;
+uniform Light light;
+
+void main()
+{
+    vec4 col = texture2D(tex,coord);
+    vec3 L = light.pos.xyz-point;
+    L = normalize(L);
+    gl_FragColor.rgb = col.rgb*light.col.rgb*dot(L,newNormals);
+    gl_FragColor.a = col.a;
+}

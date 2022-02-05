@@ -1,0 +1,16 @@
+attribute vec4 position;
+uniform mat4 projMatrix;
+uniform mat4 viewMatrix;
+uniform vec4 eyePos;
+varying vec4 color;
+
+void main()
+{
+    color = vec4((position.x+1.0)/2.0,(position.y+1.0)/2.0,(position.z+1.0)/1.0,1.0);
+    gl_PointSize = position.w;
+    vec4 p = vec4(position.x,position.y,position.z,1.0);
+    p.x += eyePos.x;
+    p.y += eyePos.y;
+    p.z += eyePos.z;
+    gl_Position = p*viewMatrix*projMatrix;
+}

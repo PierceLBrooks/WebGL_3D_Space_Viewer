@@ -1,0 +1,27 @@
+struct Light
+{
+    vec4 pos;
+    vec4 col;
+};
+
+attribute vec3 position;
+uniform sampler2D tex;
+attribute vec2 texcoord;
+attribute vec3 normals;
+varying vec2 coord;
+uniform mat4 projMatrix;
+uniform mat4 worldMatrix;
+uniform mat4 viewMatrix;
+varying vec3 point;
+varying vec3 newNormals;
+uniform Light light;
+
+void main()
+{
+    coord=texcoord;
+    newNormals=normals;
+    vec4 p = vec4(position, 0.5);
+    p = p*worldMatrix;
+    point = p.xyz;
+    gl_Position = p*viewMatrix*projMatrix;
+}
