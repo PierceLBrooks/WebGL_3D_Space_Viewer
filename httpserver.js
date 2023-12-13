@@ -8,12 +8,17 @@ var fs = require('fs');
 var contenttypes = {
     '.jpeg' : 'image/jpeg',
     '.jpg' : 'image/jpeg',
-    '.png': 'image/png',
+    '.png' : 'image/png',
     '.gif' : 'image/gif',
     '.js' : 'application/javascript',
     '.css' : 'text/css',
     '.htm' : 'text/html',
-    '.html' : 'text/html' 
+    '.html' : 'text/html',
+    '.webm' : 'video/webm',
+    '.mp4' : 'video/mp4',
+    '.mov' : 'video/quicktime',
+    '.m3u8' : 'application/x-mpegURL',
+    '.ts' : 'video/MP2T'
 }
 
 function handler(req,resp){
